@@ -33,7 +33,7 @@ body {
   max-width: 100%;
 }
 
-/* Minimalist scrollbar — overlay on supporting browsers to avoid layout shift */
+/* Minimalist scrollbar, overlay on supporting browsers to avoid layout shift */
 @supports (overflow: overlay) {
   html {
     overflow-y: overlay;
