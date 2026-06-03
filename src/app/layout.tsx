@@ -16,6 +16,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Nischay Consultancy | Architecture & Design",
   description: "Determination in Every Development. Premium architecture consultancy firm.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export const viewport: Viewport = {

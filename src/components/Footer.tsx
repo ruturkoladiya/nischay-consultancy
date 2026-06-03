@@ -9,7 +9,16 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row justify-between mb-24 gap-16">
           <div className="max-w-md">
             <p className="text-xs uppercase tracking-widest text-gray-400 mb-6">Contact</p>
-            <h2 className="text-4xl font-serif mb-2">Nischay Consultancy</h2>
+            <div className="flex items-center gap-3 mb-2">
+              <Image
+                src="/logo.png"
+                alt="Nischay Logo"
+                width={40}
+                height={40}
+                className="object-contain"
+              />
+              <h2 className="text-4xl font-serif">Nischay</h2>
+            </div>
             <p className="text-gray-500 font-medium text-xs tracking-widest uppercase mb-6">
               Determination in Every Development
             </p>
@@ -66,14 +75,23 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center py-6 border-t border-gray-border/60 gap-8">
-          <div className="text-2xl font-serif font-black tracking-tighter uppercase">Nischay</div>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/logo.png"
+              alt="Nischay Logo"
+              width={28}
+              height={28}
+              className="object-contain"
+            />
+            <span className="text-2xl font-serif font-black tracking-tighter uppercase">Nischay</span>
+          </div>
           
           <nav className="flex flex-wrap justify-center gap-x-5 gap-y-3 sm:gap-x-8 text-xs font-medium tracking-widest uppercase max-w-full">
-            <a href="#about" className="hover:text-gray-500">About</a>
-            <a href="#services" className="hover:text-gray-500">Services</a>
-            <a href="#projects" className="hover:text-gray-500">Projects</a>
-            <a href="#team" className="hover:text-gray-500">Team</a>
-            <a href="#contact" className="hover:text-gray-500">Contact</a>
+            <a href="/about" className="hover:text-gray-500">About</a>
+            <a href="/services" className="hover:text-gray-500">Services</a>
+            <a href="/#projects" className="hover:text-gray-500">Projects</a>
+            <a href="/#team" className="hover:text-gray-500">Team</a>
+            <a href="/#contact" className="hover:text-gray-500">Contact</a>
           </nav>
 
           <div className="flex gap-6 text-gray-400 tracking-wider text-xs font-medium">

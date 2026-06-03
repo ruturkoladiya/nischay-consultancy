@@ -5,6 +5,15 @@ export default function AboutPreview() {
   return (
     <section id="about" className="w-full min-w-0 py-20 md:py-40 px-5 sm:px-6 md:px-8 bg-white overflow-hidden relative border-t border-gray-border/40">
       <div className="container mx-auto max-w-5xl flex flex-col items-center text-center">
+        <div className="mb-6 flex justify-center">
+          <Image
+            src="/logo.png"
+            alt="Nischay Logo"
+            width={48}
+            height={48}
+            className="object-contain"
+          />
+        </div>
         <p className="text-xs tracking-widest uppercase text-gray-500 mb-6">About</p>
         <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-8">
           Building Ideas with Vision & Precision

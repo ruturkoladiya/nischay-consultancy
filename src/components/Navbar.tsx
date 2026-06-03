@@ -3,15 +3,19 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#projects", label: "Projects" },
-  { href: "#team", label: "Team" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#team", label: "Team" },
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -31,10 +35,17 @@ export default function Navbar() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     closeMenu();
-    if (href.startsWith("#")) {
+    if (href.startsWith("/#") && isHome) {
       e.preventDefault();
-      const target = document.querySelector(href);
+      const hash = href.substring(1); // e.g. "#services"
+      const target = document.querySelector(hash);
       target?.scrollIntoView({ behavior: "smooth" });
+    } else if (href === "/about" && pathname === "/about") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (href === "/services" && pathname === "/services") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -57,7 +68,16 @@ export default function Navbar() {
 
             <nav className="absolute top-0 right-0 flex h-full w-[min(100%,20rem)] flex-col bg-white shadow-2xl pt-6 pb-8 px-6">
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-border/40">
-                <p className="text-xs uppercase tracking-widest text-gray-400">Menu</p>
+                <div className="flex items-center gap-2">
+                  <Image
+                    src="/logo.png"
+                    alt="Nischay Logo"
+                    width={24}
+                    height={24}
+                    className="object-contain"
+                  />
+                  <span className="text-sm font-serif font-black tracking-tighter uppercase">Nischay</span>
+                </div>
                 <button
                   type="button"
                   className="flex items-center justify-center w-11 h-11 -mr-2 cursor-pointer"
@@ -83,9 +103,9 @@ export default function Navbar() {
               </ul>
 
               <a
-                href="#contact"
+                href="/#contact"
                 className="mt-auto px-5 py-3.5 bg-black text-white text-sm tracking-wide font-medium text-center hover:bg-gray-800 transition-colors cursor-pointer"
-                onClick={(e) => handleNavClick(e, "#contact")}
+                onClick={(e) => handleNavClick(e, "/#contact")}
               >
                 Get in Touch
               </a>
@@ -100,19 +120,39 @@ export default function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-[9999] md:z-50 isolate">
         <nav className="w-full flex items-center justify-between px-5 sm:px-6 md:px-8 py-4 md:py-6 bg-white md:bg-white/95 md:backdrop-blur-md border-b border-gray-border/50">
           <a
-            href="#"
-            className="text-2xl font-serif font-black tracking-tighter uppercase shrink-0"
-            onClick={closeMenu}
+            href="/"
+            className="flex items-center gap-3 shrink-0"
+            onClick={(e) => {
+              closeMenu();
+              if (isHome) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
           >
-            Nischay
-            <span className="font-sans font-light tracking-normal text-sm ml-2 text-gray-500 lowercase">
-              .co
+            <Image
+              src="/logo.png"
+              alt="Nischay Logo"
+              width={36}
+              height={36}
+              className="object-contain"
+            />
+            <span className="text-2xl font-serif font-black tracking-tighter uppercase">
+              Nischay
+              <span className="font-sans font-light tracking-normal text-sm ml-1.5 text-gray-500 lowercase">
+                consultancy
+              </span>
             </span>
           </a>
 
           <div className="hidden md:flex items-center gap-10 text-sm font-medium tracking-wide">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="hover:text-gray-500 transition-colors">
+              <a
+                key={link.href}
+                href={link.href}
+                className="hover:text-gray-500 transition-colors"
+                onClick={(e) => handleNavClick(e, link.href)}
+              >
                 {link.label}
               </a>
             ))}
@@ -120,8 +160,9 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4 md:gap-6">
             <a
-              href="#contact"
+              href="/#contact"
               className="hidden md:inline-block px-5 py-2.5 bg-black text-white text-sm tracking-wide font-medium hover:bg-gray-800 transition-colors duration-300"
+              onClick={(e) => handleNavClick(e, "/#contact")}
             >
               Contact
             </a>
