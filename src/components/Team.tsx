@@ -1,10 +1,11 @@
 import React from "react";
+import Image from "next/image";
 
 export default function Team() {
   const team = [
-    { name: "Khushi Shash", role: "Former Partner & Architect" },
-    { name: "Rohan Soni", role: "Former Partner & Engineer" },
-    { name: "Pooja Soni", role: "Former Partner & Engineer" },
+    { name: "Khushi Shah", role: "Former Partner & Architect", img: "/images/teams/khushi_shah.jpeg" },
+    { name: "Rohan Soni", role: "Former Partner & Engineer", img: "/images/teams/rohan_soni.jpeg" },
+    { name: "Pooja Soni", role: "Former Partner & Engineer", img: "" },
   ];
 
   return (
@@ -21,8 +22,17 @@ export default function Team() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 w-full text-center">
           {team.map((member, i) => (
             <div key={i} className="flex flex-col items-center group cursor-pointer">
-              <div className="w-24 h-24 rounded-full bg-soft-gray mb-6 flex items-center justify-center text-gray-400 group-hover:bg-black group-hover:text-white transition-colors duration-500">
-                <span className="font-serif italic text-2xl">{member.name.charAt(0)}</span>
+              <div className="w-24 h-24 rounded-full overflow-hidden bg-soft-gray mb-6 flex items-center justify-center text-gray-400 group-hover:bg-black group-hover:text-white transition-colors duration-500 relative">
+                {member.img ? (
+                  <Image
+                    src={member.img}
+                    alt={member.name}
+                    fill
+                    className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                ) : (
+                  <span className="font-serif italic text-2xl">{member.name.charAt(0)}</span>
+                )}
               </div>
               <h3 className="text-lg font-medium">{member.name}</h3>
               <p className="text-sm text-gray-500 mt-2 mb-4">{member.role}</p>

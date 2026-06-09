@@ -107,20 +107,7 @@ export default function ServicesPage() {
     }
   ];
 
-  const projects = [
-    {
-      name: "Sardhav Lake Rejuvenation",
-      location: "Gandhinagar, Gujarat",
-      desc: "An ecological rejuvenation project undertaken with the Gandhinagar Urban Development Authority, blending pedestrian infrastructure with natural wetland preservation.",
-      img: "/images/extracted/page_9_img_1.jpeg"
-    },
-    {
-      name: "Pethapur Iconic Road",
-      location: "Gandhinagar, Gujarat",
-      desc: "A 2.5 km triangular arterial streetscape development optimized for pedestrian safety, public furniture integration, and streamlined commuter flow.",
-      img: "/images/extracted/page_13_img_1.jpeg"
-    }
-  ];
+
 
   return (
     <main className="w-full min-w-0 overflow-x-hidden flex flex-col bg-white">
@@ -782,40 +769,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Featured Projects Preview */}
-      <section className="w-full py-14 md:py-26 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto border-t border-gray-border/40">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
-          <div>
-            <p className="text-xs tracking-widest uppercase text-gray-500 mb-6">Portfolio</p>
-            <h2 className="text-4xl md:text-5xl font-serif leading-tight">Services in Action</h2>
-          </div>
-          <p className="text-gray-600 font-light text-sm md:text-base max-w-sm">
-            Discover some of our premium infrastructure and lake rejuvenation projects delivered in the Gandhinagar area.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {projects.map((project, i) => (
-            <div key={i} className="group cursor-pointer flex flex-col">
-              <div className="w-full h-[250px] md:h-[400px] relative overflow-hidden mb-6">
-                <Image
-                  src={project.img}
-                  alt={project.name}
-                  fill
-                  className="object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.2s] ease-out"
-                />
-                <div className="absolute inset-0 bg-black/5"></div>
-              </div>
-              <h3 className="text-2xl font-serif text-black mb-1">{project.name}</h3>
-              <p className="text-xs uppercase tracking-wider text-gray-400 font-medium mb-3">{project.location}</p>
-              <p className="text-sm text-gray-500 font-light leading-relaxed mb-6">{project.desc}</p>
-              <div className="text-sm font-semibold flex items-center gap-2 group-hover:translate-x-2 transition-transform duration-300">
-                View Project <ArrowRight className="w-4 h-4" />
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Consultation CTA */}
       <section className="w-full py-14 md:py-26 px-5 sm:px-6 md:px-8 text-center bg-black text-white">
