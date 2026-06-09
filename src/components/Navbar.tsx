@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
 ];
@@ -38,6 +39,9 @@ export default function Navbar() {
       const hash = href.substring(1); // e.g. "#services"
       const target = document.querySelector(hash);
       target?.scrollIntoView({ behavior: "smooth" });
+    } else if (href === "/" && isHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (href === "/about" && pathname === "/about") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -87,17 +91,24 @@ export default function Navbar() {
               </div>
 
               <ul className="flex flex-col gap-1">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className="block py-4 text-base font-medium tracking-wide border-b border-gray-border/40 hover:text-gray-500 transition-colors cursor-pointer"
-                      onClick={(e) => handleNavClick(e, link.href)}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        className={`block py-4 text-base font-medium tracking-wide border-b border-gray-border/40 transition-colors cursor-pointer pl-4 border-l-2 ${
+                          isActive
+                            ? "text-black border-l-black font-semibold"
+                            : "text-gray-400 hover:text-black border-l-transparent"
+                        }`}
+                        onClick={(e) => handleNavClick(e, link.href)}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
 
               <a
@@ -144,16 +155,23 @@ export default function Navbar() {
           </a>
 
           <div className="hidden md:flex md:absolute md:left-1/2 md:-translate-x-1/2 items-center gap-10 text-sm font-medium tracking-wide">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="hover:text-gray-500 transition-colors"
-                onClick={(e) => handleNavClick(e, link.href)}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`relative py-1 transition-colors duration-300 ${
+                    isActive
+                      ? "text-black after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-black font-semibold"
+                      : "text-gray-400 hover:text-black"
+                  }`}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-4 md:gap-6">
