@@ -9,8 +9,6 @@ import Image from "next/image";
 const navLinks = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
-  { href: "/#projects", label: "Projects" },
-  { href: "/#team", label: "Team" },
 ];
 
 export default function Navbar() {
@@ -118,7 +116,7 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-[9999] md:z-50 isolate">
-        <nav className="w-full flex items-center justify-between px-5 sm:px-6 md:px-8 py-4 md:py-6 bg-white md:bg-white/95 md:backdrop-blur-md border-b border-gray-border/50">
+        <nav className="relative w-full flex items-center justify-between px-5 sm:px-6 md:px-8 py-4 md:py-6 bg-white md:bg-white/95 md:backdrop-blur-md border-b border-gray-border/50">
           <a
             href="/"
             className="flex items-center gap-3 shrink-0"
@@ -145,7 +143,7 @@ export default function Navbar() {
             </span>
           </a>
 
-          <div className="hidden md:flex items-center gap-10 text-sm font-medium tracking-wide">
+          <div className="hidden md:flex md:absolute md:left-1/2 md:-translate-x-1/2 items-center gap-10 text-sm font-medium tracking-wide">
             {navLinks.map((link) => (
               <a
                 key={link.href}

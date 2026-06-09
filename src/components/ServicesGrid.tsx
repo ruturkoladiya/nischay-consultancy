@@ -30,7 +30,7 @@ export default function ServicesGrid() {
     },
     {
       title: "Project Management Consultancy (PMC)",
-      desc: "End-to-end planning, scheduling, stakeholder coordination, and dynamic site supervision to deliver projects on time and within budget.",
+      desc: "End-to-end planning, scheduling, stakeholder coordination, and dynamic site supervision to deliver developments on time and within budget.",
       img: "https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80",
       href: "/services#pmc",
     },
@@ -57,10 +57,10 @@ export default function ServicesGrid() {
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
             <a href="/#contact" className="px-6 py-3 bg-black text-white text-sm hover:bg-gray-800 transition-colors text-center">
-              Discuss Your Project
+              Get a Consultation
             </a>
             <a href="/services" className="px-6 py-3 border border-gray-border flex items-center justify-center gap-2 text-sm bg-white hover:bg-gray-50 transition-colors">
-              Explore Our Work <ArrowRight className="w-4 h-4" />
+              Explore Services <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>

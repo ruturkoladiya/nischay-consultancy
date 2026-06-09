@@ -8,11 +8,11 @@ export default function CTA() {
           Let’s Create Something Meaningful Together
         </h2>
         <p className="text-lg text-gray-600 font-light mb-12 max-w-4xl">
-          Whether you are planning a residential space, infrastructure project, commercial development, or urban transformation, Nischay Consultancy is committed to delivering solutions that combine innovation, engineering excellence, and thoughtful design.
+          Whether you are planning a residential space, infrastructure development, commercial development, or urban transformation, Nischay Consultancy is committed to delivering solutions that combine innovation, engineering excellence, and thoughtful design.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <a href="tel:+123456789" className="px-10 py-4 bg-black text-white text-sm font-medium tracking-wider uppercase hover:bg-gray-800 transition-colors">
-            Start Your Project
+            Get a Consultation
           </a>
           <a href="https://wa.me/123456789" className="px-10 py-4 border border-black bg-white text-black text-sm font-medium tracking-wider uppercase hover:bg-gray-50 transition-colors">
             Contact Our Team

@@ -23,10 +23,10 @@ export default function AboutPreview() {
             Nischay Consultancy is a multidisciplinary consultancy firm based in Gandhinagar, dedicated to delivering comprehensive solutions in architecture, engineering, interior design, urban planning, and PMC services.
           </p>
           <p>
-            Our approach combines creative thinking with practical execution to ensure every project is not only visually impactful but also structurally efficient and sustainable. Whether it’s a residential development, public infrastructure, urban streetscape, or interior space, we focus on creating designs that balance aesthetics, usability, and long-term value.
+            Our approach combines creative thinking with practical execution to ensure every development is not only visually impactful but also structurally efficient and sustainable. Whether it’s a residential development, public infrastructure, urban streetscape, or interior space, we focus on creating designs that balance aesthetics, usability, and long-term value.
           </p>
           <p>
-            Every project we undertake is driven by collaboration, attention to detail, and a passion for building spaces that truly make a difference.
+            Every development we undertake is driven by collaboration, attention to detail, and a passion for building spaces that truly make a difference.
           </p>
         </div>
         

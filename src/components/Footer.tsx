@@ -89,8 +89,6 @@ export default function Footer() {
           <nav className="flex flex-wrap justify-center gap-x-5 gap-y-3 sm:gap-x-8 text-xs font-medium tracking-widest uppercase max-w-full">
             <a href="/about" className="hover:text-gray-500">About</a>
             <a href="/services" className="hover:text-gray-500">Services</a>
-            <a href="/#projects" className="hover:text-gray-500">Projects</a>
-            <a href="/#team" className="hover:text-gray-500">Team</a>
             <a href="/#contact" className="hover:text-gray-500">Contact</a>
           </nav>
 

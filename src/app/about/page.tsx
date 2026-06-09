@@ -43,19 +43,22 @@ export default function AboutPage() {
 
   const teamMembers = [
     {
-      name: "Khushi Shash",
+      name: "Khushi Shah",
       role: "Former Partner & Architect",
-      desc: "Combines architectural leadership with practical design oversight for high-impact projects."
+      desc: "Combines architectural leadership with practical design oversight for high-impact developments.",
+      img: "/images/teams/khushi_shah.jpeg"
     },
     {
       name: "Rohan Soni",
       role: "Former Partner & Engineer",
-      desc: "Provides structural engineering direction and ensures project feasibility across disciplines."
+      desc: "Provides structural engineering direction and ensures feasibility across disciplines.",
+      img: "/images/teams/rohan_soni.jpeg"
     },
     {
       name: "Pooja Soni",
       role: "Former Partner & Engineer",
-      desc: "Supports engineering strategy and quality control in every stage of planning and execution."
+      desc: "Supports engineering strategy and quality control in every stage of planning and execution.",
+      img: ""
     }
   ];
 
@@ -115,14 +118,10 @@ export default function AboutPage() {
             <p>
               We believe that good architecture cannot exist without structural integrity and functional reality. By combining architects, civil engineers, PMC specialists, and interior designers in one collaborative studio, we eliminate communication gaps and deliver seamless, optimized project executions.
             </p>
-            <div className="pt-6 border-t border-gray-border/60 grid grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="pt-6 border-t border-gray-border/60 grid grid-cols-2 gap-8">
               <div>
                 <p className="text-3xl font-serif font-light text-black">15+</p>
                 <p className="text-xs uppercase tracking-widest text-gray-400 mt-1">Years Practice</p>
-              </div>
-              <div>
-                <p className="text-3xl font-serif font-light text-black">120+</p>
-                <p className="text-xs uppercase tracking-widest text-gray-400 mt-1">Projects Delivered</p>
               </div>
               <div>
                 <p className="text-3xl font-serif font-light text-black">8+</p>
@@ -219,45 +218,61 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Profile Section (staggered editorial grid) */}
-      <section id="team" className="w-full py-24 md:py-36 px-5 sm:px-6 md:px-16 bg-soft-gray/20 border-t border-gray-border/40">
+      {/* Team Profile Section (Asymmetrical Editorial Grid) */}
+      <section id="team" className="w-full py-24 md:py-48 px-5 sm:px-6 md:px-16 bg-soft-gray/20 border-t border-gray-border/40">
         <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
             <div>
               <p className="text-xs tracking-widest uppercase text-gray-500 mb-6">Expertise</p>
-              <h2 className="text-4xl md:text-5xl font-serif leading-tight">Our Architects & Specialists</h2>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight">Our Architects &amp; Specialists</h2>
             </div>
             <p className="text-gray-600 font-light text-sm md:text-base max-w-sm leading-relaxed">
               A diverse collective of professional architects, engineers, estimators, and project managers committed to design precision.
             </p>
           </div>
 
-          {/* Premium Architectural Editorial Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16">
             {teamMembers.map((member, i) => (
-              <div
-                key={i}
-                className="flex flex-col border border-gray-border/50 bg-white p-8 group hover:border-black transition-all duration-500 cursor-pointer justify-between min-h-[300px]"
+              <div 
+                key={i} 
+                className={`group cursor-pointer flex flex-col transition-all duration-700 ${
+                  i === 1 ? "md:mt-16" : i === 2 ? "md:mt-8" : ""
+                }`}
               >
-                <div>
-                  <div className="w-12 h-12 bg-soft-gray mb-6 flex items-center justify-center text-gray-500 group-hover:bg-black group-hover:text-white transition-colors duration-500 font-serif italic text-xl">
-                    {member.name.charAt(0)}
-                  </div>
-                  <h3 className="text-lg font-serif font-medium text-black mb-1 group-hover:translate-x-1 transition-transform duration-300">
-                    {member.name}
-                  </h3>
-                  <p className="text-xs uppercase tracking-wider text-gray-400 font-medium mb-4">
-                    {member.role}
-                  </p>
-                  <p className="text-sm text-gray-600 font-light leading-relaxed">
-                    {member.desc}
-                  </p>
+                {/* Image container */}
+                <div className="w-full aspect-[3/4] bg-soft-gray relative overflow-hidden mb-8">
+                  {member.img ? (
+                    <Image
+                      src={member.img}
+                      alt={member.name}
+                      fill
+                      className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-[1.2s] ease-out group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 font-serif italic text-5xl">
+                      {member.name.charAt(0)}
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
                 </div>
 
-                <div className="mt-8 flex gap-4 text-xs font-serif italic text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="hover:text-black transition-colors">Li</span>
-                  <span className="hover:text-black transition-colors">Tw</span>
+                {/* Info Container with Fine Separator Line */}
+                <div className="border-t border-black/10 pt-6 flex justify-between items-start">
+                  <div className="space-y-2.5">
+                    <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-semibold block">
+                      {member.role}
+                    </span>
+                    <h3 className="text-2xl font-serif text-black leading-tight group-hover:translate-x-1 transition-transform duration-300">
+                      {member.name}
+                    </h3>
+                  </div>
+                  <span className="font-serif italic text-lg text-gray-300">0{i + 1}</span>
                 </div>
+
+                {/* Description Bio */}
+                <p className="text-sm font-light text-gray-500 leading-relaxed mt-4 max-w-sm">
+                  {member.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -272,7 +287,7 @@ export default function AboutPage() {
             Ready to build something great?
           </h2>
           <p className="text-base md:text-lg text-gray-400 font-light mb-12 max-w-2xl leading-relaxed">
-            Let’s discuss your project. Make here to listen and create solutions that matter. Whether you require architectural layouts, structural designs, or PMC services, our Gandhinagar office is ready to partner with you.
+            Let’s discuss your development. Make here to listen and create solutions that matter. Whether you require architectural layouts, structural designs, or PMC services, our Gandhinagar office is ready to partner with you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full justify-center px-4">
             <a

@@ -24,13 +24,13 @@ export default function WhyChooseUs() {
     },
     {
       title: "Quality & Commitment",
-      desc: "We believe in delivering projects with precision, efficiency, and uncompromising quality standards.",
+      desc: "We believe in delivering developments with precision, efficiency, and uncompromising quality standards.",
       img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
       className: "md:col-span-1 md:row-span-1 relative group overflow-hidden text-white flex flex-col justify-end p-8"
     },
     {
       title: "Timely Execution",
-      desc: "Our disciplined workflow ensures projects are completed efficiently without compromising design or quality.",
+      desc: "Our disciplined workflow ensures developments are completed efficiently without compromising design or quality.",
       img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
       className: "md:col-span-2 md:row-span-1 relative group overflow-hidden text-white flex flex-col justify-end p-8 md:p-10"
     }

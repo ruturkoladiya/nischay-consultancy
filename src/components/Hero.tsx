@@ -19,11 +19,11 @@ export default function Hero() {
           With a commitment to quality, transparency, and innovation, we help transform ideas into sustainable and future-ready spaces.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-          <a href="#projects" className="px-8 py-4 bg-black text-white text-sm font-medium tracking-wide hover:bg-gray-800 transition-colors flex items-center gap-2">
-            Discuss Your Project <ArrowRight className="w-4 h-4" />
+          <a href="#contact" className="px-8 py-4 bg-black text-white text-sm font-medium tracking-wide hover:bg-gray-800 transition-colors flex items-center gap-2">
+            Get a Consultation <ArrowRight className="w-4 h-4" />
           </a>
           <a href="#about" className="px-8 py-4 border border-gray-border text-sm font-medium tracking-wide hover:bg-soft-gray transition-colors">
-            Explore Our Work
+            About Us
           </a>
         </div>
       </div>
