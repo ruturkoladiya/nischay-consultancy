@@ -110,13 +110,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 font-light pt-8 gap-4 pb-8">
+        <div className="text-center text-xs text-gray-500 font-light pt-8 pb-8">
           <p>© 2026 Nischay Consultancy. All rights reserved.</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-black">Privacy</a>
-            <a href="#" className="hover:text-black">Terms</a>
-            <a href="#" className="hover:text-black">Cookies</a>
-          </div>
         </div>
       </div>
     </footer>
