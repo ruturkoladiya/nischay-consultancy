@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
 
 export default function ServicesPage() {
   const [activeSection, setActiveSection] = useState("architectural");
@@ -32,30 +33,43 @@ export default function ServicesPage() {
       const el = document.getElementById(id);
       if (el) {
         setTimeout(() => {
-          const y = el.getBoundingClientRect().top + window.pageYOffset;
+          const y = el.getBoundingClientRect().top + window.scrollY;
           window.scrollTo({ top: y, behavior: "smooth" });
           setActiveSection(id);
-        }, 300); // slight delay to allow layout to settle
+        }, 300);
       }
     }
 
     const sections = ["architectural", "structural", "mepf", "costing", "pmc", "qaqc"];
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200; // offset for sticky navigation
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
+    
+    // Accessibility & Performance: Use IntersectionObserver instead of a scroll listener
+    const observerOptions = {
+      root: null,
+      rootMargin: "-25% 0px -55% 0px", // triggers when section enters the upper-mid viewport
+      threshold: 0,
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.unobserve(el);
+      });
+    };
   }, []);
 
   const handleTabClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -63,7 +77,7 @@ export default function ServicesPage() {
     const el = document.getElementById(id);
     if (el) {
       const yOffset = -150; // offset to account for navbar + sticky sub-nav
-      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
       setActiveSection(id);
     }
@@ -107,15 +121,18 @@ export default function ServicesPage() {
     }
   ];
 
-
-
   return (
     <main className="w-full min-w-0 overflow-x-hidden flex flex-col bg-white">
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative w-full pt-32 md:pt-48 pb-16 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto">
-        <div className="flex flex-col space-y-6 md:space-y-8 mb-16 max-w-4xl">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+          className="flex flex-col space-y-6 md:space-y-8 mb-16 max-w-4xl"
+        >
           <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-gray-500 font-medium">
             Studio Capabilities
           </p>
@@ -125,19 +142,24 @@ export default function ServicesPage() {
           <p className="text-lg md:text-xl text-gray-600 font-light max-w-2xl leading-relaxed">
             At Nischay Consultancy, we deliver comprehensive, multidisciplinary engineering and architectural services across the entire project lifecycle from concept to completion.
           </p>
-        </div>
+        </motion.div>
 
         {/* Hero Image */}
-        <div className="w-full h-[35vh] md:h-[50vh] relative overflow-hidden group">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
+          className="w-full h-[35vh] md:h-[50vh] relative overflow-hidden group cursor-pointer"
+        >
           <Image
-            src="/images/extracted/page_26_img_1.jpeg"
+            src="/images/services/services_hero.jpeg"
             alt="Consultancy Work Backdrop"
             fill
             priority
-            className="object-cover filter grayscale hover:grayscale-0 transition-all duration-[1.5s] ease-out group-hover:scale-[1.02]"
+            className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-[1.5s] ease-out group-hover:scale-[1.02]"
           />
           <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Overview Block */}
@@ -194,14 +216,20 @@ export default function ServicesPage() {
         
         {/* SECTION 1: Architectural Design & Planning */}
         <section id="architectural" className="w-full py-14 md:py-26 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto border-b border-gray-border/40">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16"
+          >
             <div className="lg:col-span-5 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-4 mb-6">
                   <span className="text-5xl font-serif italic text-gray-300">01</span>
                   <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">Architectural Design &amp; Planning</span>
                 </div>
-                <h3 className="text-3xl md:text-5xl font-serif text-black mb-8 leading-tight">
+                <h3 className="text-3xl md:text-5xl font-serif text-black mb-8 leading-tight text-balance">
                   Balancing aesthetics, space planning, and environment.
                 </h3>
                 <p className="text-gray-600 font-light leading-relaxed text-base mb-8">
@@ -229,17 +257,17 @@ export default function ServicesPage() {
             </div>
 
             <div className="lg:col-span-7 space-y-12">
-              <div className="w-full h-[250px] md:h-[400px] relative overflow-hidden group">
+              <div className="w-full h-[250px] md:h-[400px] relative overflow-hidden group cursor-pointer">
                 <Image
-                  src="/images/extracted/page_22_img_1.jpeg"
+                  src="/images/services/architectural_design_detail.jpeg"
                   alt="Architectural Design & Planning"
                   fill
-                  className="object-cover filter grayscale hover:grayscale-0 transition-all duration-1000 ease-out group-hover:scale-105"
+                  className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/5"></div>
+                <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
               </div>
 
-              {/* Scope of Services - Asymmetrical grid columns */}
+              {/* Scope of Services */}
               <div>
                 <p className="text-xs uppercase tracking-widest text-black font-semibold mb-6">Scope of Services</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
@@ -261,24 +289,30 @@ export default function ServicesPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* SECTION 2: Structural Engineering Consultancy */}
         <section id="structural" className="w-full py-14 md:py-26 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto border-b border-gray-border/40">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <motion.div 
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
+          >
             <div className="lg:col-span-6 order-2 lg:order-1 space-y-12">
-              <div className="w-full h-[250px] md:h-[400px] relative overflow-hidden group">
+              <div className="w-full h-[250px] md:h-[400px] relative overflow-hidden group cursor-pointer">
                 <Image
-                  src="/images/extracted/page_24_img_1.jpeg"
+                  src="/images/services/structural_engineering_detail.jpeg"
                   alt="Structural Engineering"
                   fill
-                  className="object-cover filter grayscale hover:grayscale-0 transition-all duration-1000 ease-out group-hover:scale-105"
+                  className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/5"></div>
+                <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
               </div>
 
-              {/* Key Strengths - grid format */}
+              {/* Key Strengths */}
               <div>
                 <p className="text-xs uppercase tracking-widest text-black font-semibold mb-6">Key Strengths</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -288,7 +322,7 @@ export default function ServicesPage() {
                     "Adherence to national and international standards",
                     "Efficient coordination with other disciplines"
                   ].map((item, idx) => (
-                    <div key={idx} className="bg-white border border-gray-border/40 p-5 hover:border-black transition-colors duration-500">
+                    <div key={idx} className="bg-white border border-gray-border/40 p-5 hover:border-black transition-colors duration-500 shadow-sm">
                       <CheckCircle className="w-5 h-5 text-black mb-3" strokeWidth={1.5} />
                       <p className="text-gray-700 text-sm font-light leading-relaxed">{item}</p>
                     </div>
@@ -302,7 +336,7 @@ export default function ServicesPage() {
                 <span className="text-5xl font-serif italic text-gray-300">02</span>
                 <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">Structural Engineering Consultancy</span>
               </div>
-              <h3 className="text-3xl md:text-5xl font-serif text-black mb-8 leading-tight">
+              <h3 className="text-3xl md:text-5xl font-serif text-black mb-8 leading-tight text-balance">
                 Safety, precision, and structural stability.
               </h3>
               <p className="text-gray-600 font-light leading-relaxed text-base mb-8">
@@ -328,169 +362,183 @@ export default function ServicesPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* SECTION 3: MEPF Consultancy */}
         <section id="mepf" className="w-full py-14 md:py-26 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto border-b border-gray-border/40">
-          <div className="flex flex-col mb-16">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="text-5xl font-serif italic text-gray-300">03</span>
-              <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">MEPF Consultancy (Mechanical, Electrical, Plumbing &amp; Fire)</span>
-            </div>
-            <h3 className="text-3xl md:text-5xl font-serif text-black max-w-3xl leading-tight">
-              Integrated utility design for operational reliability and occupant comfort.
-            </h3>
-            <p className="text-gray-600 font-light leading-relaxed text-base max-w-3xl mt-6">
-              We provide fully coordinated MEPF blueprints. By integrating heating, lighting, sanitation, and safety mechanisms within the structure, we optimize building performance and assure complete compliance with fire codes.
-            </p>
-          </div>
-
-          {/* 5-Column Technical Panel Dashboard */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {/* Mechanical */}
-            <div className="bg-white border border-gray-border/50 p-6 flex flex-col justify-between hover:border-black transition-colors duration-500">
-              <div>
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-border/40">
-                  <Wind className="w-5 h-5 text-black shrink-0" strokeWidth={1.5} />
-                  <h4 className="text-sm font-semibold text-black">Mechanical (HVAC)</h4>
-                </div>
-                <ul className="space-y-3">
-                  {[
-                    "HVAC layouts & duct engineering",
-                    "Thermal load calculations",
-                    "Ventilation & exhaust planning"
-                  ].map((item, i) => (
-                    <li key={i} className="text-xs text-gray-500 font-light leading-relaxed flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-black rounded-full mt-1.5 shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+          >
+            <div className="flex flex-col mb-16">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-5xl font-serif italic text-gray-300">03</span>
+                <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">MEPF Consultancy (Mechanical, Electrical, Plumbing &amp; Fire)</span>
               </div>
+              <h3 className="text-3xl md:text-5xl font-serif text-black max-w-3xl leading-tight text-balance">
+                Integrated utility design for operational reliability and occupant comfort.
+              </h3>
+              <p className="text-gray-600 font-light leading-relaxed text-base max-w-3xl mt-6">
+                We provide fully coordinated MEPF blueprints. By integrating heating, lighting, sanitation, and safety mechanisms within the structure, we optimize building performance and assure complete compliance with fire codes.
+              </p>
             </div>
 
-            {/* Electrical */}
-            <div className="bg-white border border-gray-border/50 p-6 flex flex-col justify-between hover:border-black transition-colors duration-500">
-              <div>
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-border/40">
-                  <Zap className="w-5 h-5 text-black shrink-0" strokeWidth={1.5} />
-                  <h4 className="text-sm font-semibold text-black">Electrical</h4>
+            {/* 5-Column Technical Panel Dashboard */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+              {/* Mechanical */}
+              <div className="bg-white border border-gray-border/50 p-6 flex flex-col justify-between hover:border-black transition-colors duration-500 shadow-sm">
+                <div>
+                  <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-border/40">
+                    <Wind className="w-5 h-5 text-black shrink-0" strokeWidth={1.5} />
+                    <h4 className="text-sm font-semibold text-black">Mechanical (HVAC)</h4>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      "HVAC layouts & duct engineering",
+                      "Thermal load calculations",
+                      "Ventilation & exhaust planning"
+                    ].map((item, i) => (
+                      <li key={i} className="text-xs text-gray-500 font-light leading-relaxed flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 bg-black rounded-full mt-1.5 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-3">
-                  {[
-                    "Electrical load estimations",
-                    "HT/LT power distribution",
-                    "Energy-efficient illumination",
-                    "Backup systems & solar integration"
-                  ].map((item, i) => (
-                    <li key={i} className="text-xs text-gray-500 font-light leading-relaxed flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-black rounded-full mt-1.5 shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
 
-            {/* Plumbing */}
-            <div className="bg-white border border-gray-border/50 p-6 flex flex-col justify-between hover:border-black transition-colors duration-500">
-              <div>
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-border/40">
-                  <Droplets className="w-5 h-5 text-black shrink-0" strokeWidth={1.5} />
-                  <h4 className="text-sm font-semibold text-black">Plumbing</h4>
+              {/* Electrical */}
+              <div className="bg-white border border-gray-border/50 p-6 flex flex-col justify-between hover:border-black transition-colors duration-500 shadow-sm">
+                <div>
+                  <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-border/40">
+                    <Zap className="w-5 h-5 text-black shrink-0" strokeWidth={1.5} />
+                    <h4 className="text-sm font-semibold text-black">Electrical</h4>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      "Electrical load estimations",
+                      "HT/LT power distribution",
+                      "Energy-efficient illumination",
+                      "Backup systems & solar integration"
+                    ].map((item, i) => (
+                      <li key={i} className="text-xs text-gray-500 font-light leading-relaxed flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 bg-black rounded-full mt-1.5 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-3">
-                  {[
-                    "Water distribution networks",
-                    "Drainage & storm designs",
-                    "Rainwater harvesting systems"
-                  ].map((item, i) => (
-                    <li key={i} className="text-xs text-gray-500 font-light leading-relaxed flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-black rounded-full mt-1.5 shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
 
-            {/* Fire Protection */}
-            <div className="bg-white border border-gray-border/50 p-6 flex flex-col justify-between hover:border-black transition-colors duration-500">
-              <div>
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-border/40">
-                  <Flame className="w-5 h-5 text-black shrink-0" strokeWidth={1.5} />
-                  <h4 className="text-sm font-semibold text-black">Fire Protection</h4>
+              {/* Plumbing */}
+              <div className="bg-white border border-gray-border/50 p-6 flex flex-col justify-between hover:border-black transition-colors duration-500 shadow-sm">
+                <div>
+                  <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-border/40">
+                    <Droplets className="w-5 h-5 text-black shrink-0" strokeWidth={1.5} />
+                    <h4 className="text-sm font-semibold text-black">Plumbing</h4>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      "Water distribution networks",
+                      "Drainage & storm designs",
+                      "Rainwater harvesting systems"
+                    ].map((item, i) => (
+                      <li key={i} className="text-xs text-gray-500 font-light leading-relaxed flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 bg-black rounded-full mt-1.5 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-3">
-                  {[
-                    "Detection & alarms systems",
-                    "Sprinklers & hydrant design",
-                    "Fire safety code compliances"
-                  ].map((item, i) => (
-                    <li key={i} className="text-xs text-gray-500 font-light leading-relaxed flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-black rounded-full mt-1.5 shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
 
-            {/* Additional / BIM */}
-            <div className="bg-white border border-gray-border/50 p-6 flex flex-col justify-between hover:border-black transition-colors duration-500">
-              <div>
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-border/40">
-                  <PlusCircle className="w-5 h-5 text-black shrink-0" strokeWidth={1.5} />
-                  <h4 className="text-sm font-semibold text-black">Coordinated BIM</h4>
+              {/* Fire Protection */}
+              <div className="bg-white border border-gray-border/50 p-6 flex flex-col justify-between hover:border-black transition-colors duration-500 shadow-sm">
+                <div>
+                  <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-border/40">
+                    <Flame className="w-5 h-5 text-black shrink-0" strokeWidth={1.5} />
+                    <h4 className="text-sm font-semibold text-black">Fire Protection</h4>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      "Detection & alarms systems",
+                      "Sprinklers & hydrant design",
+                      "Fire safety code compliances"
+                    ].map((item, i) => (
+                      <li key={i} className="text-xs text-gray-500 font-light leading-relaxed flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 bg-black rounded-full mt-1.5 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-3">
-                  {[
-                    "Coordinated MEP drawings",
-                    "Clash detection via BIM",
-                    "Energy audit & sustainability consulting"
-                  ].map((item, i) => (
-                    <li key={i} className="text-xs text-gray-500 font-light leading-relaxed flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-black rounded-full mt-1.5 shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+              </div>
+
+              {/* Additional / BIM */}
+              <div className="bg-white border border-gray-border/50 p-6 flex flex-col justify-between hover:border-black transition-colors duration-500 shadow-sm">
+                <div>
+                  <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-border/40">
+                    <PlusCircle className="w-5 h-5 text-black shrink-0" strokeWidth={1.5} />
+                    <h4 className="text-sm font-semibold text-black">Coordinated BIM</h4>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      "Coordinated MEP drawings",
+                      "Clash detection via BIM",
+                      "Energy audit & sustainability consulting"
+                    ].map((item, i) => (
+                      <li key={i} className="text-xs text-gray-500 font-light leading-relaxed flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 bg-black rounded-full mt-1.5 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* SECTION 4: Estimation, Costing & Tendering */}
         <section id="costing" className="w-full py-14 md:py-26 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto border-b border-gray-border/40">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16"
+          >
             <div className="lg:col-span-5 space-y-6">
               <div className="flex items-center gap-4 mb-2">
                 <span className="text-5xl font-serif italic text-gray-300">04</span>
                 <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">Estimation, Costing &amp; Tendering</span>
               </div>
-              <h3 className="text-3xl md:text-5xl font-serif text-black leading-tight">
-                Maintaining absolute financial control.
+              <h3 className="text-3xl md:text-5xl font-serif text-black leading-tight text-balance">
+                Reliable Costing & Quantity Takeoff Expertise.
               </h3>
               <p className="text-gray-600 font-light leading-relaxed text-base">
                 We offer precise costing and quantity takeoff models that minimize financial vulnerabilities. By framing detailed bid specifications, we ensure transparency and protect developer equity.
               </p>
               
               {/* Image in sidebar */}
-              <div className="w-full h-[200px] relative overflow-hidden group">
+              <div className="w-full h-[200px] relative overflow-hidden group cursor-pointer">
                 <Image
-                  src="/images/extracted/page_12_img_1.jpeg"
+                  src="/images/services/cost_estimation_detail.jpeg"
                   alt="Cost Estimation Master Layout"
                   fill
-                  className="object-cover filter grayscale hover:grayscale-0 transition-all duration-1000"
+                  className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
               </div>
             </div>
 
             {/* Structured Cost Table / Comparison Columns */}
             <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Cost Scope */}
-              <div className="bg-white border border-gray-border/50 p-8 flex flex-col justify-between hover:border-black transition-colors duration-500">
+              <div className="bg-white border border-gray-border/50 p-8 flex flex-col justify-between hover:border-black transition-colors duration-500 shadow-sm">
                 <div>
                   <h4 className="text-sm font-semibold uppercase tracking-wider text-black mb-6 flex items-center gap-3">
                     <FileText className="w-4 h-4" /> Scope of Services
@@ -514,7 +562,7 @@ export default function ServicesPage() {
               </div>
 
               {/* Benefits */}
-              <div className="bg-black text-white p-8 flex flex-col justify-between">
+              <div className="bg-black text-white p-8 flex flex-col justify-between shadow-md">
                 <div>
                   <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-6 flex items-center gap-3">
                     <TrendingUp className="w-4 h-4" /> Financial Protections
@@ -540,21 +588,27 @@ export default function ServicesPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* SECTION 5: Project Management Consultancy (PMC) */}
         <section id="pmc" className="w-full py-14 md:py-26 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto border-b border-gray-border/40">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <motion.div 
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
+          >
             <div className="lg:col-span-6 space-y-12">
-              <div className="w-full h-[250px] md:h-[400px] relative overflow-hidden group">
+              <div className="w-full h-[250px] md:h-[400px] relative overflow-hidden group cursor-pointer">
                 <Image
-                  src="/images/extracted/page_14_img_2.jpeg"
+                  src="/images/services/project_management_detail.jpeg"
                   alt="PMC Site Execution"
                   fill
-                  className="object-cover filter grayscale hover:grayscale-0 transition-all duration-1000"
+                  className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/5"></div>
+                <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
               </div>
 
               {/* Roadmap representation */}
@@ -582,7 +636,7 @@ export default function ServicesPage() {
                 <span className="text-5xl font-serif italic text-gray-300">05</span>
                 <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">Project Management Consultancy (PMC)</span>
               </div>
-              <h3 className="text-3xl md:text-5xl font-serif text-black mb-8 leading-tight">
+              <h3 className="text-3xl md:text-5xl font-serif text-black mb-8 leading-tight text-balance">
                 Disciplined schedule, budget, and coordination control.
               </h3>
               <p className="text-gray-600 font-light leading-relaxed text-base mb-8">
@@ -614,18 +668,24 @@ export default function ServicesPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* SECTION 6: Quality Assurance & Quality Control (QA/QC) */}
         <section id="qaqc" className="w-full py-14 md:py-26 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <motion.div 
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
+          >
             <div className="lg:col-span-5 space-y-6">
               <div className="flex items-center gap-4 mb-2">
                 <span className="text-5xl font-serif italic text-gray-300">06</span>
                 <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">Quality Assurance &amp; Quality Control (QA/QC)</span>
               </div>
-              <h3 className="text-3xl md:text-5xl font-serif text-black leading-tight">
+              <h3 className="text-3xl md:text-5xl font-serif text-black leading-tight text-balance">
                 Zero-compromise material audits and inspections.
               </h3>
               <p className="text-gray-600 font-light leading-relaxed text-base">
@@ -644,14 +704,14 @@ export default function ServicesPage() {
             </div>
 
             <div className="lg:col-span-7 space-y-12">
-              <div className="w-full h-[250px] md:h-[400px] relative overflow-hidden group">
+              <div className="w-full h-[250px] md:h-[400px] relative overflow-hidden group cursor-pointer">
                 <Image
-                  src="/images/extracted/page_30_img_1.jpeg"
+                  src="/images/services/quality_assurance_detail.jpeg"
                   alt="QA/QC Inspection Audit"
                   fill
-                  className="object-cover filter grayscale hover:grayscale-0 transition-all duration-1000"
+                  className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/5"></div>
+                <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
               </div>
 
               {/* Detailed Scope Grid */}
@@ -675,12 +735,12 @@ export default function ServicesPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
       </div>
 
-      {/* Integrated Approach Section (Redesigned banner) */}
+      {/* Integrated Approach Section */}
       <section className="w-full py-14 md:py-26 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto border-t border-gray-border/40">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-4">
@@ -696,22 +756,22 @@ export default function ServicesPage() {
           <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
             {[
               {
-                icon: <Layers className="w-6 h-6 text-black" strokeWidth={1.5} />,
+                icon: <Layers className="w-6 h-6 text-black group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />,
                 title: "Interdisciplinary Coordination",
                 desc: "Seamless communication loop between architecture, structural designs, and MEPF systems to catch conflicts before construction starts."
               },
               {
-                icon: <Zap className="w-6 h-6 text-black" strokeWidth={1.5} />,
+                icon: <Zap className="w-6 h-6 text-black group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />,
                 title: "Advanced Technologies",
                 desc: "Harnessing structural analysis software and coordinated BIM models to run mock tests and evaluate spatial structures."
               },
               {
-                icon: <TrendingUp className="w-6 h-6 text-black" strokeWidth={1.5} />,
+                icon: <TrendingUp className="w-6 h-6 text-black group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />,
                 title: "Value Engineering",
                 desc: "Deep analysis of material options and system efficiency to deliver robust results while optimizing budget allotments."
               },
               {
-                icon: <Activity className="w-6 h-6 text-black" strokeWidth={1.5} />,
+                icon: <Activity className="w-6 h-6 text-black group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />,
                 title: "Sustainability Focus",
                 desc: "Prioritizing ecological balance through green building systems, rainwater harvesting integration, and energy-conscious planning."
               }
@@ -752,7 +812,7 @@ export default function ServicesPage() {
             {advantages.map((adv, i) => (
               <div 
                 key={i} 
-                className={`border border-gray-border/50 bg-white p-8 md:p-10 hover:border-black transition-all duration-500 flex flex-col justify-between ${
+                className={`border border-gray-border/50 bg-white p-8 md:p-10 hover:border-black transition-all duration-500 flex flex-col justify-between shadow-sm ${
                   i === 0 || i === 6 ? "lg:col-span-2 lg:row-span-1" : ""
                 }`}
               >
@@ -769,11 +829,15 @@ export default function ServicesPage() {
         </div>
       </section>
 
-
-
       {/* Consultation CTA */}
       <section className="w-full py-14 md:py-26 px-5 sm:px-6 md:px-8 text-center bg-black text-white">
-        <div className="container mx-auto max-w-3xl flex flex-col items-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+          className="container mx-auto max-w-3xl flex flex-col items-center"
+        >
           <p className="text-xs tracking-widest uppercase text-gray-400 mb-6">Start Building</p>
           <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-8">
             Discuss your development with us
@@ -783,19 +847,21 @@ export default function ServicesPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full justify-center px-4">
             <a
-              href="tel:+919876543210"
+              href="tel:+919898703577"
               className="px-8 py-4 bg-white text-black text-xs uppercase tracking-widest font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
             >
               <Phone className="w-4 h-4" /> Call Studio
             </a>
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/919898703577"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 border border-white text-white text-xs uppercase tracking-widest font-semibold hover:bg-white hover:text-black transition-colors flex items-center justify-center gap-2"
             >
               <MessageSquare className="w-4 h-4" /> WhatsApp Us
             </a>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <Footer />

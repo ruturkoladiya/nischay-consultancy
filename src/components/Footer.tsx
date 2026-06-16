@@ -1,8 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
+  const mapSearchUrl = "https://www.google.com/maps/search/?api=1&query=804,+Synergy+Space,+Opp.+Aashka+Hospital,+Beside+D-mart,+Sargasan,+Gandhinagar+382421";
+
   return (
     <footer id="contact" className="w-full min-w-0 bg-white pt-20 md:pt-32 pb-8 px-5 sm:px-6 md:px-16 border-t border-gray-border/40">
       <div className="container mx-auto max-w-7xl">
@@ -36,14 +39,14 @@ export default function Footer() {
                 <Mail className="w-5 h-5 text-gray-400 mt-1" />
                 <div>
                   <p className="text-sm font-medium">Email</p>
-                  <a href="mailto:hello@nischay.com" className="text-sm font-light text-gray-500 hover:text-black">hello@nischay.com</a>
+                  <a href="mailto:info@nischayconsultancy.com" className="text-sm font-light text-gray-500 hover:text-black">info@nischayconsultancy.com</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <Phone className="w-5 h-5 text-gray-400 mt-1" />
                 <div>
                   <p className="text-sm font-medium">Phone</p>
-                  <a href="tel:+919876543210" className="text-sm font-light text-gray-500 hover:text-black">+91 98765 43210</a>
+                  <a href="tel:+919898703577" className="text-sm font-light text-gray-500 hover:text-black">+91 98987 03577</a>
                 </div>
               </div>
             </div>
@@ -55,7 +58,14 @@ export default function Footer() {
                 <p className="text-sm font-light text-gray-500 leading-relaxed max-w-[250px]">
                   804, Synergy Space,<br />Opp. Aashka Hospital, Beside D-mart,<br />Sargasan, Gandhinagar 382421
                 </p>
-                <a href="#" className="inline-block mt-2 text-xs uppercase tracking-widest underline decoration-gray-300 underline-offset-4 hover:decoration-black cursor-pointer">View on map</a>
+                <a 
+                  href={mapSearchUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-2 text-xs uppercase tracking-widest underline decoration-gray-300 underline-offset-4 hover:decoration-black cursor-pointer"
+                >
+                  View on map
+                </a>
               </div>
             </div>
           </div>
@@ -71,6 +81,7 @@ export default function Footer() {
              allowFullScreen 
              loading="lazy" 
              referrerPolicy="no-referrer-when-downgrade"
+             title="Nischay Consultancy Office Location Map"
            ></iframe>
         </div>
 
@@ -87,18 +98,15 @@ export default function Footer() {
           </div>
           
           <nav className="flex flex-wrap justify-center gap-x-5 gap-y-3 sm:gap-x-8 text-xs font-medium tracking-widest uppercase max-w-full">
-            <a href="/" className="hover:text-gray-500">Home</a>
-            <a href="/about" className="hover:text-gray-500">About</a>
-            <a href="/services" className="hover:text-gray-500">Services</a>
-            <a href="/#contact" className="hover:text-gray-500">Contact</a>
+            <Link href="/" className="hover:text-gray-500">Home</Link>
+            <Link href="/about" className="hover:text-gray-500">About</Link>
+            <Link href="/services" className="hover:text-gray-500">Services</Link>
+            <Link href="/#contact" className="hover:text-gray-500">Contact</Link>
           </nav>
 
           <div className="flex gap-6 text-gray-400 tracking-wider text-xs font-medium">
-            <span className="hover:text-black cursor-pointer hidden md:block">IG</span>
-            <span className="hover:text-black cursor-pointer hidden md:block">LI</span>
-            <span className="hover:text-black cursor-pointer hidden md:block">TW</span>
-            <span className="hover:text-black cursor-pointer hidden md:block">FB</span>
-            <a href="#" className="hover:text-black cursor-pointer flex justify-center items-center font-serif text-xs md:hidden">in</a>
+            <a href="https://www.instagram.com/nischayconsultancy?igsh=MWhhZHh4c2IweWV3YQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="hover:text-black transition-colors">IG</a>
+            <a href="https://www.linkedin.com/company/nischay-consultancy/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="hover:text-black transition-colors">LI</a>
           </div>
         </div>
 

@@ -1,37 +1,40 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function WhyChooseUs() {
   const features = [
     {
       title: "Integrated Expertise",
       desc: "A complete combination of architecture, engineering, planning, and execution support under one roof.",
-      img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2062&auto=format&fit=crop",
+      img: "/images/services/mepf_consultancy.jpeg",
       className: "md:col-span-2 md:row-span-2 relative group overflow-hidden text-white flex flex-col justify-end p-8 md:p-12"
     },
     {
       title: "Design with Purpose",
       desc: "We focus on creating spaces that are practical, sustainable, and future-ready while maintaining strong visual appeal.",
-      img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2070&auto=format&fit=crop",
+      img: "/images/about/innovation.jpeg",
       className: "md:col-span-1 md:row-span-1 relative group overflow-hidden text-white flex flex-col justify-end p-8 md:p-10"
     },
     {
       title: "Transparent Approach",
       desc: "Clear communication, professional processes, and collaborative project management at every stage.",
-      img: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop",
+      img: "/images/about/partnership.jpeg",
       className: "md:col-span-1 md:row-span-1 relative group overflow-hidden text-white flex flex-col justify-end p-8 md:p-10"
     },
     {
       title: "Quality & Commitment",
       desc: "We believe in delivering developments with precision, efficiency, and uncompromising quality standards.",
-      img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
+      img: "/images/about/philosophy.jpeg",
       className: "md:col-span-1 md:row-span-1 relative group overflow-hidden text-white flex flex-col justify-end p-8"
     },
     {
       title: "Timely Execution",
       desc: "Our disciplined workflow ensures developments are completed efficiently without compromising design or quality.",
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+      img: "/images/about/expertise.jpeg",
       className: "md:col-span-2 md:row-span-1 relative group overflow-hidden text-white flex flex-col justify-end p-8 md:p-10"
     }
   ];
@@ -51,9 +54,34 @@ export default function WhyChooseUs() {
         </div>
         
         {/* Architectural Bento Box Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[350px] gap-4 w-full">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
+          className="grid grid-cols-1 md:grid-cols-3 auto-rows-[350px] gap-4 w-full"
+        >
           {features.map((feature, i) => (
-            <div key={i} className={feature.className}>
+            <motion.div 
+              key={i} 
+              variants={{
+                hidden: { opacity: 0, scale: 0.96, y: 24 },
+                visible: {
+                  opacity: 1,
+                  scale: 1,
+                  y: 0,
+                  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }
+                }
+              }}
+              className={`${feature.className} bg-neutral-950`}
+            >
               
               {/* Background Image */}
               <Image 
@@ -83,9 +111,9 @@ export default function WhyChooseUs() {
                 </div>
               </div>
               
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         
       </div>
     </section>

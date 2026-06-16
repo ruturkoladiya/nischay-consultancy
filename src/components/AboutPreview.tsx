@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function AboutPreview() {
   return (
@@ -18,7 +20,7 @@ export default function AboutPreview() {
         <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-8">
           Building Ideas with Vision & Precision
         </h2>
-        <div className="space-y-6 text-lg text-gray-600 font-light max-w-4xl leading-relaxed mb-16">
+        <div className="space-y-6 text-lg text-gray-600 font-light max-w-4xl leading-relaxed mb-10">
           <p>
             Nischay Consultancy is a multidisciplinary consultancy firm based in Gandhinagar, dedicated to delivering comprehensive solutions in architecture, engineering, interior design, urban planning, and PMC services.
           </p>
@@ -29,13 +31,22 @@ export default function AboutPreview() {
             Every development we undertake is driven by collaboration, attention to detail, and a passion for building spaces that truly make a difference.
           </p>
         </div>
+
+        <div className="mb-16">
+          <Link 
+            href="/about" 
+            className="inline-flex items-center gap-2 px-6 py-3 border border-black text-black text-sm font-medium tracking-wide hover:bg-black hover:text-white transition-colors duration-300"
+          >
+            Read More About Our Studio <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
         
-        <div className="w-full h-[40vh] md:h-[60vh] relative overflow-hidden">
+        <div className="w-full h-[40vh] md:h-[60vh] relative overflow-hidden group cursor-pointer">
           <Image 
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80" 
+            src="/images/about/office_interior.jpeg" 
             alt="Office Interior" 
             fill
-            className="object-cover filter grayscale hover:grayscale-0 transition-all duration-[1.5s]"
+            className="object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.5s]"
           />
         </div>
       </div>
