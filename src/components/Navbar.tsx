@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -26,6 +27,21 @@ export default function Navbar() {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  // Accessibility: Close menu on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+    if (menuOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [menuOpen]);
 
@@ -95,7 +111,7 @@ export default function Navbar() {
                   const isActive = pathname === link.href;
                   return (
                     <li key={link.href}>
-                      <a
+                      <Link
                         href={link.href}
                         className={`block py-4 text-base font-medium tracking-wide border-b border-gray-border/40 transition-colors cursor-pointer pl-4 border-l-2 ${
                           isActive
@@ -105,19 +121,19 @@ export default function Navbar() {
                         onClick={(e) => handleNavClick(e, link.href)}
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}
               </ul>
 
-              <a
+              <Link
                 href="/#contact"
                 className="mt-auto px-5 py-3.5 bg-black text-white text-sm tracking-wide font-medium text-center hover:bg-gray-800 transition-colors cursor-pointer"
                 onClick={(e) => handleNavClick(e, "/#contact")}
               >
                 Get in Touch
-              </a>
+              </Link>
             </nav>
           </div>,
           document.body
@@ -128,7 +144,7 @@ export default function Navbar() {
     <>
       <header className="fixed top-0 left-0 right-0 z-[9999] md:z-50 isolate">
         <nav className="relative w-full flex items-center justify-between px-5 sm:px-6 md:px-8 py-4 md:py-6 bg-white md:bg-white/95 md:backdrop-blur-md border-b border-gray-border/50">
-          <a
+          <Link
             href="/"
             className="flex items-center gap-3 shrink-0"
             onClick={(e) => {
@@ -152,13 +168,13 @@ export default function Navbar() {
                 consultancy
               </span>
             </span>
-          </a>
+          </Link>
 
           <div className="hidden md:flex md:absolute md:left-1/2 md:-translate-x-1/2 items-center gap-10 text-sm font-medium tracking-wide">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className={`relative py-1 transition-colors duration-300 ${
@@ -169,19 +185,19 @@ export default function Navbar() {
                   onClick={(e) => handleNavClick(e, link.href)}
                 >
                   {link.label}
-                </a>
+                </Link>
               );
             })}
           </div>
 
           <div className="flex items-center gap-4 md:gap-6">
-            <a
+            <Link
               href="/#contact"
               className="hidden md:inline-block px-5 py-2.5 bg-black text-white text-sm tracking-wide font-medium hover:bg-gray-800 transition-colors duration-300"
               onClick={(e) => handleNavClick(e, "/#contact")}
             >
               Contact
-            </a>
+            </Link>
             <button
               type="button"
               className="md:hidden relative z-10 flex items-center justify-center w-12 h-12 -mr-2 text-black cursor-pointer select-none [-webkit-tap-highlight-color:transparent]"

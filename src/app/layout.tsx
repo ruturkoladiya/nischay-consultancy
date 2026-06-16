@@ -37,8 +37,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${playfair.variable} ${inter.variable} antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen w-full overflow-x-hidden bg-white text-black font-sans selection:bg-black selection:text-white">
+      <body suppressHydrationWarning className="min-h-screen w-full overflow-x-hidden bg-white text-black font-sans selection:bg-black selection:text-white">
         {children}
       </body>
     </html>

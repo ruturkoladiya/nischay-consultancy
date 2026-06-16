@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { 
-  ArrowRight, 
   Phone, 
   MessageSquare, 
   CheckCircle, 
@@ -23,7 +22,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 
-export default function ServicesPage() {
+export default function ServicesClient() {
   const [activeSection, setActiveSection] = useState("architectural");
 
   useEffect(() => {
@@ -168,7 +167,7 @@ export default function ServicesPage() {
           <div className="lg:col-span-5">
             <p className="text-xs tracking-widest uppercase text-gray-500 mb-6">Introduction</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif leading-tight">
-              A Multidisciplinary Architecture &amp; Engineering Studio
+              A Multidisciplinary Architecture & Engineering Studio
             </h2>
           </div>
           <div className="lg:col-span-7 text-gray-600 font-light text-base md:text-lg leading-relaxed space-y-6">
@@ -227,7 +226,7 @@ export default function ServicesPage() {
               <div>
                 <div className="flex items-center gap-4 mb-6">
                   <span className="text-5xl font-serif italic text-gray-300">01</span>
-                  <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">Architectural Design &amp; Planning</span>
+                  <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">Architectural Design & Planning</span>
                 </div>
                 <h3 className="text-3xl md:text-5xl font-serif text-black mb-8 leading-tight text-balance">
                   Balancing aesthetics, space planning, and environment.
@@ -348,16 +347,16 @@ export default function ServicesPage() {
                 <h4 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">Technical Deliverables</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm font-light text-gray-300">
                   <ul className="space-y-3">
-                    <li>• Structural RCC &amp; steel designs</li>
+                    <li>• Structural RCC & steel designs</li>
                     <li>• Advanced software analysis (ETABS, STAAD)</li>
                     <li>• Seismic resistance (IS codes)</li>
-                    <li>• Foundation design (shallow &amp; deep)</li>
+                    <li>• Foundation design (shallow & deep)</li>
                   </ul>
                   <ul className="space-y-3">
-                    <li>• Structural detailing &amp; BBS</li>
-                    <li>• Structural audits &amp; assessment</li>
-                    <li>• Retrofitting &amp; strengthening</li>
-                    <li>• Peer reviews &amp; value engineering</li>
+                    <li>• Structural detailing & BBS</li>
+                    <li>• Structural audits & assessment</li>
+                    <li>• Retrofitting & strengthening</li>
+                    <li>• Peer reviews & value engineering</li>
                   </ul>
                 </div>
               </div>
@@ -376,7 +375,7 @@ export default function ServicesPage() {
             <div className="flex flex-col mb-16">
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-5xl font-serif italic text-gray-300">03</span>
-                <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">MEPF Consultancy (Mechanical, Electrical, Plumbing &amp; Fire)</span>
+                <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">MEPF Consultancy (Mechanical, Electrical, Plumbing & Fire)</span>
               </div>
               <h3 className="text-3xl md:text-5xl font-serif text-black max-w-3xl leading-tight text-balance">
                 Integrated utility design for operational reliability and occupant comfort.
@@ -514,7 +513,7 @@ export default function ServicesPage() {
             <div className="lg:col-span-5 space-y-6">
               <div className="flex items-center gap-4 mb-2">
                 <span className="text-5xl font-serif italic text-gray-300">04</span>
-                <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">Estimation, Costing &amp; Tendering</span>
+                <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">Estimation, Costing & Tendering</span>
               </div>
               <h3 className="text-3xl md:text-5xl font-serif text-black leading-tight text-balance">
                 Reliable Costing & Quantity Takeoff Expertise.
@@ -663,7 +662,7 @@ export default function ServicesPage() {
                   </div>
                   <div className="flex items-start gap-2.5">
                     <CheckCircle className="w-4 h-4 text-black shrink-0 mt-0.5" strokeWidth={1.5} />
-                    <span>Improved cost &amp; risk control</span>
+                    <span>Improved cost & risk control</span>
                   </div>
                 </div>
               </div>
@@ -683,7 +682,7 @@ export default function ServicesPage() {
             <div className="lg:col-span-5 space-y-6">
               <div className="flex items-center gap-4 mb-2">
                 <span className="text-5xl font-serif italic text-gray-300">06</span>
-                <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">Quality Assurance &amp; Quality Control (QA/QC)</span>
+                <span className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">Quality Assurance & Quality Control (QA/QC)</span>
               </div>
               <h3 className="text-3xl md:text-5xl font-serif text-black leading-tight text-balance">
                 Zero-compromise material audits and inspections.
@@ -843,7 +842,7 @@ export default function ServicesPage() {
             Discuss your development with us
           </h2>
           <p className="text-base md:text-lg text-gray-400 font-light mb-12 max-w-2xl leading-relaxed">
-            Partner with Gandhinagar’s integrated architecture and PMC studio to design and execute your next residential, commercial, or public project. We are ready to assist.
+            Partner with Gandhinagar's integrated architecture and PMC studio to design and execute your next residential, commercial, or public project. We are ready to assist.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full justify-center px-4">
             <a
