@@ -137,7 +137,7 @@ export default function AboutClient() {
               Founded with a mission to deliver comprehensive, end-to-end consulting services, Nischay Consultancy has grown into a trusted partner for public and private developments. Based in Gandhinagar, Gujarat, we support the region’s growth by offering integrated design, structural analysis, project management, and urban planning.
             </p>
             <p>
-              We believe that good architecture cannot exist without structural integrity and functional reality. By combining architects, civil engineers, PMC specialists, and interior designers in one collaborative studio, we eliminate communication gaps and deliver seamless, optimized project executions.
+              We believe that good architecture cannot exist without structural integrity and functional reality. By combining architects, civil engineers, Project Management Consultancy specialists, and interior designers in one collaborative studio, we eliminate communication gaps and deliver seamless, optimized project executions.
             </p>
             <div className="pt-6 border-t border-gray-border/60 grid grid-cols-2 gap-8">
               <div>
@@ -334,7 +334,7 @@ export default function AboutClient() {
             Ready to build something great?
           </h2>
           <p className="text-base md:text-lg text-gray-400 font-light mb-12 max-w-2xl leading-relaxed">
-            Let’s discuss your development. We are here to listen and create solutions that matter. Whether you require architectural layouts, structural designs, or PMC services, our Gandhinagar office is ready to partner with you.
+            Let’s discuss your development. We are here to listen and create solutions that matter. Whether you require architectural layouts, structural designs, or Project Management Consultancy services, our Gandhinagar office is ready to partner with you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full justify-center px-4">
             <a

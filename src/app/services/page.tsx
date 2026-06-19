@@ -87,7 +87,7 @@ export default function ServicesPage() {
     {
       num: "01",
       title: "End-to-End Consultancy",
-      desc: "We offer comprehensive, multidisciplinary services across the entire project lifecycle from concept planning and design approvals to final QA/QC and PMC handover."
+      desc: "We offer comprehensive, multidisciplinary services across the entire project lifecycle from concept planning and design approvals to final QA/QC and Project Management Consultancy handover."
     },
     {
       num: "02",
@@ -191,7 +191,7 @@ export default function ServicesPage() {
               { id: "structural", name: "02. Structural" },
               { id: "mepf", name: "03. MEPF Systems" },
               { id: "costing", name: "04. Estimation & Bid" },
-              { id: "pmc", name: "05. PMC" },
+              { id: "pmc", name: "05. Project Management Consultancy" },
               { id: "qaqc", name: "06. QA/QC" }
             ].map((tab) => (
               <a
@@ -526,7 +526,7 @@ export default function ServicesPage() {
               {/* Image in sidebar */}
               <div className="w-full h-[200px] relative overflow-hidden group cursor-pointer">
                 <Image
-                  src="/images/services/cost_estimation_detail.jpeg"
+                  src="/images/services/cost_estimation.png"
                   alt="Cost Estimation Master Layout"
                   fill
                   className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out group-hover:scale-105"
@@ -603,8 +603,8 @@ export default function ServicesPage() {
             <div className="lg:col-span-6 space-y-12">
               <div className="w-full h-[250px] md:h-[400px] relative overflow-hidden group cursor-pointer">
                 <Image
-                  src="/images/services/project_management_detail.jpeg"
-                  alt="PMC Site Execution"
+                  src="/images/services/project_management.png"
+                  alt="Project Management Consultancy Site Execution"
                   fill
                   className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out group-hover:scale-105"
                 />
@@ -640,7 +640,7 @@ export default function ServicesPage() {
                 Disciplined schedule, budget, and coordination control.
               </h3>
               <p className="text-gray-600 font-light leading-relaxed text-base mb-8">
-                Our PMC workflows ensure seamless transit from drawings to physical handovers. We optimize schedules, verify material specifications, audit contractor billings, and solve execution bottlenecks dynamically.
+                Our Project Management Consultancy workflows ensure seamless transit from drawings to physical handovers. We optimize schedules, verify material specifications, audit contractor billings, and solve execution bottlenecks dynamically.
               </p>
 
               {/* Value Proposition highlighted box */}
@@ -843,7 +843,7 @@ export default function ServicesPage() {
             Discuss your development with us
           </h2>
           <p className="text-base md:text-lg text-gray-400 font-light mb-12 max-w-2xl leading-relaxed">
-            Partner with Gandhinagar’s integrated architecture and PMC studio to design and execute your next residential, commercial, or public project. We are ready to assist.
+            Partner with Gandhinagar’s integrated architecture and Project Management Consultancy studio to design and execute your next residential, commercial, or public project. We are ready to assist.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full justify-center px-4">
             <a

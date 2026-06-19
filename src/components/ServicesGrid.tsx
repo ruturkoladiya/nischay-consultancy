@@ -23,13 +23,13 @@ export default function ServicesGrid() {
     {
       title: "MEPF Consultancy",
       desc: "Fully integrated Mechanical, Electrical, Plumbing, and Fire (MEPF) system design ensuring operational reliability, comfort, and safety.",
-      img: "/images/services/mepf_consultancy.jpeg",
+      img: "/images/services/mepf.jpeg",
       href: "/services#mepf",
     },
     {
       title: "Estimation, Costing & Tendering",
       desc: "Precise cost estimations, detailed quantity take-offs (BOQ), rate analysis, and bid evaluation support to maintain complete financial control.",
-      img: "/images/about/office_interior.jpeg",
+      img: "/images/about/estimation.jpeg",
       href: "/services#costing",
     },
     {

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export default function Team() {
   const team = [
     { name: "Khushi Shah", role: "Former Partner & Architect", img: "/images/teams/khushi_shah.jpg" },
-    { name: "Rohan Soni", role: "Former Partner & Engineer", img: "/images/teams/rohan_soni.jpeg" },
+    { name: "Rohan Soni", role: "Former Partner & Engineer", img: "/images/teams/rohan_soni.jpeg", position: "object-top" },
     { name: "Pooja Soni", role: "Former Partner & Engineer", img: "/images/teams/pooja_soni.jpeg", position: "object-top" },
   ];
 

@@ -26,7 +26,7 @@ export default function Footer() {
               Determination in Every Development
             </p>
             <p className="text-gray-500 font-light text-sm leading-relaxed mb-4 font-medium uppercase tracking-widest text-xs text-black break-words">
-              Architecture | Structural Engineering | Urban Planning | Interior Design | Project Management | PMC Services
+              Architecture | Structural Engineering | Urban Planning | Interior Design | Project Management | Project Management Consultancy Services
             </p>
             <p className="text-gray-500 font-light text-sm leading-relaxed mb-8">
               Creating sustainable, efficient, and future-focused built environments with precision and purpose.

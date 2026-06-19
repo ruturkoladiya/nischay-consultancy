@@ -75,14 +75,14 @@ export default function Hero() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
-        className="w-full h-[50vh] md:h-[65vh] relative overflow-hidden group"
+        className="w-full h-[50vh] md:h-[65vh] relative overflow-hidden group bg-black"
       >
         <Image 
           src="/images/premium_archtecture_exterior.jpeg" 
           alt="Premium Architecture Exterior"
           fill
           priority
-          className="object-cover group-hover:scale-105 transition-all duration-[2s] ease-out grayscale group-hover:grayscale-0"
+          className="object-contain group-hover:scale-105 transition-all duration-[2s] ease-out grayscale group-hover:grayscale-0"
         />
         <div className="absolute inset-0 bg-black/10"></div>
       </motion.div>
