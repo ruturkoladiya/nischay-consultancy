@@ -71,21 +71,49 @@ export default function Hero() {
         </motion.div>
       </motion.div>
       
-      <motion.div 
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
-        className="w-full h-[50vh] md:h-[65vh] relative overflow-hidden group bg-black"
-      >
-        <Image 
-          src="/images/premium_archtecture_exterior.jpeg" 
-          alt="Premium Architecture Exterior"
-          fill
-          priority
-          className="object-contain group-hover:scale-105 transition-all duration-[2s] ease-out grayscale group-hover:grayscale-0"
-        />
-        <div className="absolute inset-0 bg-black/10"></div>
-      </motion.div>
+      {/* Creative Architectural/Geometric Animation */}
+      <div className="w-full relative flex flex-col items-center justify-center py-8 md:py-22 mt-8 overflow-hidden min-h-[50vh] md:min-h-[60vh] group">
+        
+        {/* Kinetic Wireframe Sculpture (Represents structure, space, engineering) */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20 transition-opacity duration-1000 group-hover:opacity-40"
+          style={{ perspective: "1200px" }}
+        >
+          <motion.div 
+            animate={{ rotateX: [0, 360], rotateY: [0, 180] }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[90vw] h-[90vw] md:w-[40vw] md:h-[40vw] max-w-[600px] max-h-[600px] border-[1px] border-black rounded-full"
+          />
+          <motion.div 
+            animate={{ rotateY: [0, 360], rotateZ: [0, 180] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[70vw] h-[70vw] md:w-[30vw] md:h-[30vw] max-w-[450px] max-h-[450px] border-[1px] border-black rounded-full"
+          />
+          <motion.div 
+            animate={{ rotateZ: [0, 360], rotateX: [0, 180] }}
+            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[110vw] h-[110vw] md:w-[50vw] md:h-[50vw] max-w-[750px] max-h-[750px] border-[1px] border-black rounded-full"
+          />
+        </div>
+
+        {/* Central Glassmorphism Nameplate */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          whileHover={{ scale: 1.02 }}
+          className="relative z-10 w-[90%] md:w-auto mx-auto text-center backdrop-blur-md bg-white/40 px-4 py-8 sm:px-10 sm:py-10 md:px-18 md:py-14 rounded-3xl border border-white/60 shadow-[0_20px_60px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_30px_80px_rgba(0,0,0,0.1)] hover:bg-white/60 cursor-pointer"
+        >
+          <h2 className="text-[clamp(1.75rem,5vw,5rem)] font-serif font-light tracking-[0.1em] sm:tracking-[0.15em] text-gray-900 uppercase mb-4 sm:mb-6 leading-tight sm:leading-none">
+            Nischay<br className="md:hidden" /> Consultancy
+          </h2>
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-gray-400 to-transparent mb-6 sm:mb-8" />
+          <p className="text-[10px] sm:text-xs md:text-sm tracking-[0.2em] sm:tracking-[0.4em] uppercase text-gray-500 font-medium">
+            Architectural Intelligence
+          </p>
+        </motion.div>
+        
+      </div>
     </section>
   );
 }
