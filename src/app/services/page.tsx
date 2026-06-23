@@ -843,14 +843,14 @@ export default function ServicesPage() {
             Discuss your development with us
           </h2>
           <p className="text-base md:text-lg text-gray-400 font-light mb-12 max-w-2xl leading-relaxed">
-            Partner with Gandhinagar’s integrated architecture and Project Management Consultancy studio to design and execute your next residential, commercial, or public project. We are ready to assist.
+            Creating inspiring spaces with a seamless blend of architecture, design, and project management expertise. We provide end-to-end solutions for residential, commercial, and public projects, ensuring quality, functionality, and lasting value.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full justify-center px-4">
             <a
               href="tel:+919898703577"
               className="px-8 py-4 bg-white text-black text-xs uppercase tracking-widest font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
             >
-              <Phone className="w-4 h-4" /> Call Studio
+              <Phone className="w-4 h-4" /> Contact Us
             </a>
             <a
               href="https://wa.me/919898703577"
