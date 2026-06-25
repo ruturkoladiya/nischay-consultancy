@@ -399,7 +399,7 @@ export default function AboutClient() {
               href="tel:+919898703577"
               className="px-8 py-4 bg-white text-black text-xs uppercase tracking-widest font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
             >
-              <Phone className="w-4 h-4" /> Call Us
+              <Phone className="w-4 h-4" /> Contact Us
             </a>
             <a
               href="https://wa.me/919898703577"
