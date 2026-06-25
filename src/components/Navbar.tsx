@@ -20,7 +20,13 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = window.requestAnimationFrame(() => {
+      setMounted(true);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   useEffect(() => {
@@ -48,7 +54,10 @@ export default function Navbar() {
   const closeMenu = useCallback(() => setMenuOpen(false), []);
   const toggleMenu = useCallback(() => setMenuOpen((open) => !open), []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
     closeMenu();
     if (href.startsWith("/#") && isHome) {
       e.preventDefault();
@@ -72,7 +81,7 @@ export default function Navbar() {
       ? createPortal(
           <div
             id="mobile-nav-panel"
-            className="fixed inset-0 z-[9998] md:hidden"
+            className="fixed inset-0 z-9998 md:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Main navigation"
@@ -94,7 +103,9 @@ export default function Navbar() {
                     height={24}
                     className="object-contain"
                   />
-                  <span className="text-sm font-serif font-black tracking-tighter uppercase">Nischay</span>
+                  <span className="text-sm font-serif font-black tracking-tighter uppercase">
+                    Nischay
+                  </span>
                 </div>
                 <button
                   type="button"
@@ -102,7 +113,10 @@ export default function Navbar() {
                   aria-label="Close menu"
                   onClick={closeMenu}
                 >
-                  <X className="w-6 h-6 pointer-events-none" strokeWidth={1.5} />
+                  <X
+                    className="w-6 h-6 pointer-events-none"
+                    strokeWidth={1.5}
+                  />
                 </button>
               </div>
 
@@ -136,13 +150,13 @@ export default function Navbar() {
               </Link>
             </nav>
           </div>,
-          document.body
+          document.body,
         )
       : null;
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-[9999] md:z-50 isolate">
+      <header className="fixed top-0 left-0 right-0 z-9999 md:z-50 isolate">
         <nav className="relative w-full flex items-center justify-between px-5 sm:px-6 md:px-8 py-4 md:py-6 bg-white md:bg-white/95 md:backdrop-blur-md border-b border-gray-border/50">
           <Link
             href="/"
@@ -179,7 +193,7 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative py-1 transition-colors duration-300 ${
                     isActive
-                      ? "text-black after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-black font-semibold"
+                      ? "text-black after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black font-semibold"
                       : "text-gray-400 hover:text-black"
                   }`}
                   onClick={(e) => handleNavClick(e, link.href)}
@@ -210,7 +224,10 @@ export default function Navbar() {
               {menuOpen ? (
                 <X className="w-6 h-6 pointer-events-none" strokeWidth={1.5} />
               ) : (
-                <Menu className="w-6 h-6 pointer-events-none" strokeWidth={1.5} />
+                <Menu
+                  className="w-6 h-6 pointer-events-none"
+                  strokeWidth={1.5}
+                />
               )}
             </button>
           </div>

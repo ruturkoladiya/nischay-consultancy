@@ -7,7 +7,6 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -15,7 +14,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Nischay Consultancy | Architecture & Design",
-  description: "Determination in Every Development. Premium architecture consultancy firm.",
+  description:
+    "Determination in Every Development. Premium architecture consultancy firm.",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
@@ -39,7 +39,10 @@ export default function RootLayout({
       className={`${playfair.variable} ${inter.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body suppressHydrationWarning className="min-h-screen w-full overflow-x-hidden bg-white text-black font-sans selection:bg-black selection:text-white">
+      <body
+        suppressHydrationWarning
+        className="min-h-screen w-full overflow-x-hidden bg-white text-black font-sans selection:bg-black selection:text-white"
+      >
         {children}
       </body>
     </html>

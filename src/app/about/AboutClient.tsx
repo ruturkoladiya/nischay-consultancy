@@ -14,29 +14,29 @@ export default function AboutClient() {
       label: "Philosophy",
       title: "Every detail matters in architecture",
       desc: "We approach each project with meticulous attention. Precision in design leads to precision in execution. We believe that true quality lies in the details from the structural foundation to the final tactile finish, every element should serve a purpose and elevate the human experience.",
-      img: "/images/about/philosophy.jpeg"
+      img: "/images/about/philosophy.jpeg",
     },
     {
       num: "02",
       label: "Expertise",
       title: "Years of knowledge in every project",
       desc: "Our team brings decades of combined experience across residential, commercial, and urban developments. We bridge the gap between creative architectural design and rigorous engineering standards, ensuring our projects are structurally optimized, cost-efficient, and built to endure for generations.",
-      img: "/images/about/expertise.jpeg"
+      img: "/images/about/expertise.jpeg",
     },
     {
       num: "03",
       label: "Innovation",
       title: "Forward-thinking design solutions",
       desc: "We blend timeless design principles with contemporary thinking and digital workflows. By utilizing building information modeling (BIM), advanced structural simulation, and sustainable design frameworks, we craft responsive, forward-looking environments suited for a changing world.",
-      img: "/images/about/innovation.jpeg"
+      img: "/images/about/innovation.jpeg",
     },
     {
       num: "04",
       label: "Partnership",
       title: "Your vision guides our work",
       desc: "We work closely with clients, developers, and municipalities to align our designs with their strategic goals. Through open communication, collaborative workshops, and clear project management, we translate initial ideas into functional, beautiful realities that benefit the broader community.",
-      img: "/images/about/partnership.jpeg"
-    }
+      img: "/images/about/partnership.jpeg",
+    },
   ];
 
   const teamMembers = [
@@ -44,21 +44,21 @@ export default function AboutClient() {
       name: "Khushi Shah",
       role: "Former Partner & Architect",
       desc: "Combines architectural leadership with practical design oversight for high-impact developments.",
-      img: "/images/teams/khushi_shah.jpg"
+      img: "/images/teams/khushi_shah.jpg",
     },
     {
       name: "Rohan Soni",
       role: "Former Partner & Engineer",
       desc: "Provides structural engineering direction and ensures feasibility across disciplines.",
-      img: "/images/teams/rohan_soni.jpeg"
+      img: "/images/teams/rohan_soni.jpeg",
     },
     {
       name: "Pooja Soni",
       role: "Former Partner & Engineer",
       desc: "Supports engineering strategy and quality control in every stage of planning and execution.",
       img: "/images/teams/pooja_soni.jpeg",
-      position: "object-top"
-    }
+      position: "object-top",
+    },
   ];
 
   return (
@@ -67,7 +67,7 @@ export default function AboutClient() {
 
       {/* Hero Section */}
       <section className="relative w-full pt-32 md:pt-48 pb-16 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto border-b border-gray-border/40">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
@@ -80,15 +80,21 @@ export default function AboutClient() {
             Determination in Every Development.
           </h1>
           <p className="text-lg md:text-xl text-gray-600 font-light max-w-2xl leading-relaxed">
-            We are a multidisciplinary consultancy firm based in Gandhinagar, shaping architectural forms and structural engineering solutions that stand the test of time.
+            We are a multidisciplinary consultancy firm based in Gandhinagar,
+            shaping architectural forms and structural engineering solutions
+            that stand the test of time.
           </p>
         </motion.div>
 
         {/* Hero Image Block */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
+          transition={{
+            duration: 1,
+            delay: 0.4,
+            ease: [0.16, 1, 0.3, 1] as const,
+          }}
           className="w-full h-[45vh] md:h-[65vh] relative overflow-hidden group cursor-pointer"
         >
           <Image
@@ -105,7 +111,7 @@ export default function AboutClient() {
       {/* Studio Profile / Introduction Section */}
       <section className="w-full py-24 md:py-36 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -120,13 +126,15 @@ export default function AboutClient() {
                 height={32}
                 className="object-contain"
               />
-              <span className="text-xs tracking-widest uppercase text-gray-500 font-medium">Profile</span>
+              <span className="text-xs tracking-widest uppercase text-gray-500 font-medium">
+                Profile
+              </span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif leading-tight text-balance">
               Integrated Architectural & Engineering Solutions
             </h2>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -134,19 +142,33 @@ export default function AboutClient() {
             className="lg:col-span-7 flex flex-col justify-between space-y-6 text-gray-600 font-light text-base md:text-lg leading-relaxed"
           >
             <p>
-              Founded with a mission to deliver comprehensive, end-to-end consulting services, Nischay Consultancy has grown into a trusted partner for public and private developments. Based in Gandhinagar, Gujarat, we support the region’s growth by offering integrated design, structural analysis, project management, and urban planning.
+              Founded with a mission to deliver comprehensive, end-to-end
+              consulting services, Nischay Consultancy has grown into a trusted
+              partner for public and private developments. Based in Gandhinagar,
+              Gujarat, we support the region’s growth by offering integrated
+              design, structural analysis, project management, and urban
+              planning.
             </p>
             <p>
-              We believe that good architecture cannot exist without structural integrity and functional reality. By combining architects, civil engineers, Project Management Consultancy specialists, and interior designers in one collaborative studio, we eliminate communication gaps and deliver seamless, optimized project executions.
+              We believe that good architecture cannot exist without structural
+              integrity and functional reality. By combining architects, civil
+              engineers, Project Management Consultancy specialists, and
+              interior designers in one collaborative studio, we eliminate
+              communication gaps and deliver seamless, optimized project
+              executions.
             </p>
             <div className="pt-6 border-t border-gray-border/60 grid grid-cols-2 gap-8">
               <div>
                 <p className="text-3xl font-serif font-light text-black">15+</p>
-                <p className="text-xs uppercase tracking-widest text-gray-400 mt-1">Years Practice</p>
+                <p className="text-xs uppercase tracking-widest text-gray-400 mt-1">
+                  Years Practice
+                </p>
               </div>
               <div>
                 <p className="text-3xl font-serif font-light text-black">8+</p>
-                <p className="text-xs uppercase tracking-widest text-gray-400 mt-1">In-House Disciplines</p>
+                <p className="text-xs uppercase tracking-widest text-gray-400 mt-1">
+                  In-House Disciplines
+                </p>
               </div>
             </div>
           </motion.div>
@@ -157,7 +179,9 @@ export default function AboutClient() {
       <section className="w-full border-t border-gray-border/40 bg-soft-gray/30">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-16 py-24 md:py-36 space-y-24 md:space-y-36">
           <div className="max-w-3xl">
-            <p className="text-xs tracking-widest uppercase text-gray-500 mb-6">Pillars</p>
+            <p className="text-xs tracking-widest uppercase text-gray-500 mb-6">
+              Pillars
+            </p>
             <h2 className="text-4xl md:text-5xl font-serif leading-tight">
               Our Core Design and Project Philosophies
             </h2>
@@ -212,7 +236,7 @@ export default function AboutClient() {
       {/* Founder & Partnership Story */}
       <section className="w-full py-24 md:py-36 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto border-t border-gray-border/40">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -229,26 +253,41 @@ export default function AboutClient() {
               <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] as const }}
+            transition={{
+              duration: 0.8,
+              delay: 0.15,
+              ease: [0.16, 1, 0.3, 1] as const,
+            }}
             className="lg:col-span-6 space-y-6 order-1 lg:order-2"
           >
-            <p className="text-xs tracking-widest uppercase text-gray-500">History</p>
+            <p className="text-xs tracking-widest uppercase text-gray-500">
+              History
+            </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif leading-tight">
               Founding Partnership & Vision
             </h2>
             <div className="space-y-6 text-gray-600 font-light text-base md:text-lg leading-relaxed">
               <p>
-                What began as a collaborative alliance between independent architects and structural consultants solidified into Nischay Consultancy. The firm was created to resolve the constant disconnect between high-concept architectural drawings and structural engineering realities.
+                What began as a collaborative alliance between independent
+                architects and structural consultants solidified into Nischay
+                Consultancy. The firm was created to resolve the constant
+                disconnect between high-concept architectural drawings and
+                structural engineering realities.
               </p>
               <p>
-                By bringing multidisciplinary expertise under a unified design management process, we enable Gandhinagar’s residential builders, public agencies, and private developers to execute complex developments with absolute confidence.
+                By bringing multidisciplinary expertise under a unified design
+                management process, we enable Gandhinagar’s residential
+                builders, public agencies, and private developers to execute
+                complex developments with absolute confidence.
               </p>
               <p className="font-serif italic text-black">
-                “Our determination is built into every development we design and supervise. We do not just sketch forms; we calculate stability, manage timelines, and shape real spaces.”
+                “Our determination is built into every development we design and
+                supervise. We do not just sketch forms; we calculate stability,
+                manage timelines, and shape real spaces.”
               </p>
             </div>
           </motion.div>
@@ -256,26 +295,38 @@ export default function AboutClient() {
       </section>
 
       {/* Team Profile Section */}
-      <section id="team" className="w-full py-24 md:py-48 px-5 sm:px-6 md:px-16 bg-soft-gray/20 border-t border-gray-border/40">
+      <section
+        id="team"
+        className="w-full py-24 md:py-48 px-5 sm:px-6 md:px-16 bg-soft-gray/20 border-t border-gray-border/40"
+      >
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
             <div>
-              <p className="text-xs tracking-widest uppercase text-gray-500 mb-6">Expertise</p>
-              <h2 className="text-4xl md:text-5xl font-serif leading-tight">Our Architects &amp; Specialists</h2>
+              <p className="text-xs tracking-widest uppercase text-gray-500 mb-6">
+                Expertise
+              </p>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                Our Architects &amp; Specialists
+              </h2>
             </div>
             <p className="text-gray-600 font-light text-sm md:text-base max-w-sm leading-relaxed">
-              A diverse collective of professional architects, engineers, estimators, and project managers committed to design precision.
+              A diverse collective of professional architects, engineers,
+              estimators, and project managers committed to design precision.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16">
             {teamMembers.map((member, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const }}
+                transition={{
+                  duration: 0.8,
+                  delay: i * 0.1,
+                  ease: [0.16, 1, 0.3, 1] as const,
+                }}
                 className={`group cursor-pointer flex flex-col transition-all duration-700 ${
                   i === 1 ? "md:mt-16" : i === 2 ? "md:mt-8" : ""
                 }`}
@@ -287,7 +338,7 @@ export default function AboutClient() {
                       src={member.img}
                       alt={member.name}
                       fill
-                      className={`object-cover filter grayscale group-hover:grayscale-0 transition-all duration-[1.2s] ease-out group-hover:scale-105 ${member.position || 'object-center'}`}
+                      className={`object-cover filter grayscale group-hover:grayscale-0 transition-all duration-[1.2s] ease-out group-hover:scale-105 ${member.position || "object-center"}`}
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-gray-400 font-serif italic text-5xl">
@@ -307,7 +358,9 @@ export default function AboutClient() {
                       {member.name}
                     </h3>
                   </div>
-                  <span className="font-serif italic text-lg text-gray-300">0{i + 1}</span>
+                  <span className="font-serif italic text-lg text-gray-300">
+                    0{i + 1}
+                  </span>
                 </div>
 
                 {/* Description Bio */}
@@ -322,19 +375,24 @@ export default function AboutClient() {
 
       {/* Consultation CTA */}
       <section className="w-full py-24 md:py-36 px-5 sm:px-6 md:px-8 text-center bg-black text-white">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
           className="container mx-auto max-w-3xl flex flex-col items-center"
         >
-          <p className="text-xs tracking-widest uppercase text-gray-400 mb-6">Collaborate</p>
+          <p className="text-xs tracking-widest uppercase text-gray-400 mb-6">
+            Collaborate
+          </p>
           <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-8">
             Ready to build something great?
           </h2>
           <p className="text-base md:text-lg text-gray-400 font-light mb-12 max-w-2xl leading-relaxed">
-            Let’s discuss your development. We are here to listen and create solutions that matter. Whether you require architectural layouts, structural designs, or Project Management Consultancy services, our Gandhinagar office is ready to partner with you.
+            Let’s discuss your development. We are here to listen and create
+            solutions that matter. Whether you require architectural layouts,
+            structural designs, or Project Management Consultancy services, our
+            Gandhinagar office is ready to partner with you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full justify-center px-4">
             <a

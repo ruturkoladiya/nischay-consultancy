@@ -60,10 +60,16 @@ export default function ServicesGrid() {
             What We Do
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
-            <Link href="/#contact" className="px-6 py-3 bg-black text-white text-sm hover:bg-gray-800 transition-colors text-center">
+            <Link
+              href="/#contact"
+              className="px-6 py-3 bg-black text-white text-sm hover:bg-gray-800 transition-colors text-center"
+            >
               Get a Consultation
             </Link>
-            <Link href="/services" className="px-6 py-3 border border-gray-border flex items-center justify-center gap-2 text-sm bg-white hover:bg-gray-50 transition-colors">
+            <Link
+              href="/services"
+              className="px-6 py-3 border border-gray-border flex items-center justify-center gap-2 text-sm bg-white hover:bg-gray-50 transition-colors"
+            >
               Explore Services <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -76,9 +82,16 @@ export default function ServicesGrid() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] as const }}
+              transition={{
+                duration: 0.6,
+                delay: (index % 3) * 0.1,
+                ease: [0.16, 1, 0.3, 1] as const,
+              }}
             >
-              <Link href={service.href} className="flex flex-col group cursor-pointer h-full">
+              <Link
+                href={service.href}
+                className="flex flex-col group cursor-pointer h-full"
+              >
                 <div className="w-full relative h-[250px] md:h-[300px] mb-6 overflow-hidden">
                   <Image
                     src={service.img}
