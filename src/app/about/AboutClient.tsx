@@ -98,7 +98,7 @@ export default function AboutClient() {
           className="w-full h-[45vh] md:h-[65vh] relative overflow-hidden group cursor-pointer"
         >
           <Image
-            src="/images/about/philosophy.jpeg"
+            src="/images/about/about_hero.jpeg"
             alt="Nischay Studio Concept"
             fill
             priority
